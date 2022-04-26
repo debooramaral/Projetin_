@@ -1,0 +1,264 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --cor-fundo: rgb(245, 159, 102);
+    --cor-texto: rgb(107, 75, 54);
+    --cor-: rgb(245, 186, 153);
+    --cor2-: rgb(247, 167, 114); 
+    --cor3-: rgba(212, 212, 233, 0.4);
+    --cor4-: rgba(133, 108, 92, 0.2);
+    --cor5-: rgba(132, 173, 137, 0.5);
+
+}
+h1{
+    text-align: center;
+    color: var(--cor-texto);
+    font: 40px "Comic Sans MS";
+    font-weight: bold;
+    padding: 25px;
+    background-color: var(--cor-);
+    position: relative;
+    z-index: 10;
+}
+.mainmenubtn, .dropdown, .dropdown-child{
+    font: 15px "Comic Sans MS";
+}
+.mainmenubtn{
+    background-color: transparent;
+    color: var(--cor-texto);
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 20px;
+}
+.mainmenubtn:hover{
+    background-color: var(--cor-);
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+    float: right;
+    z-index: 10;
+    margin-top: 3px;
+    z-index: 10;
+}
+.dropdown-child{
+    display: none;
+    background-color: transparent;
+    min-width: 100px;
+    text-align: right;
+    padding: 5px;
+}
+.dropdown-child a{
+    color:var(--cor-texto);
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-child a:hover{
+    background-color: var(--cor-);
+    border-radius: 20px;
+}
+.dropdown:hover .dropdown-child{
+    display: block;
+}
+.cor{
+    position: absolute;
+    z-index: 100;
+}
+.c1{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: var(--cor3-);
+    animation: color-width 10s ease-in-out infinite;
+}
+.c2{
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--cor4-);
+    animation: color-heigth 10s ease-in-out infinite;
+    animation-delay: 2s;
+}
+.c3{
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--cor5-);
+    animation: color-width 10s ease-in-out infinite;
+}
+/*@keyframes color-width {
+    0%{width: 0;}
+    50%{width: 100%;}
+    100%{width: 0;}
+}
+@keyframes color-heigth {
+    0%{height: 0;}
+    50%{height: 100%;}
+    100%{height: 0;}
+}
+.slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    transition: all 3s;
+    animation: slide1 20s ease-in-out alternate infinite;
+}
+@keyframes slide1 {
+    0%{
+        background-position: left;
+        animation-delay: 5s;
+        zoom: 105%;
+        background-image: url(img/img1.jpg);
+    }
+    30%{
+        background-image: url(img/img2.jpg);
+        background-position: right;
+        animation-delay: 5s;
+        opacity: 0.8;
+        zoom: 105%;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    60%{
+        background-image: url(img/img3.jpg);
+        opacity: 1;
+        background-position: left;
+        zoom: 105%;
+    }
+    70%{
+        opacity: 0.8s;
+        transition-delay: 3s;
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        background-image: url(img/img3.jpg);
+        transition-delay: 5s;
+    }
+}*/
+/* css do player*/
+html{
+    box-sizing: border-box;
+    --parent-height: 20em;
+    --duration: 1s;
+    --duration-text-wrap: 12s 1.5s cubic-bezier(0.82, 0.82, 1, 1.01)
+    --cubic-cabeca: var(--duration) cubic-bezier(0.71, 0.21, 0.3, 0.95);
+    --cubic-slider: var(--duration) cubic-bezier(0.4, 0, 0.2, 1);
+    --cubic-play-list: .35s var(--duration) cubic-bezier(0, 0.85, 0.11, 1.64);
+    --cubic-slider-context: cubic-bezier(1, -0.01, 1, 1.01);
+}
+html::before, html::after{
+    box-sizing: inherit;
+    scrollbar-width: none;
+}
+body{
+    margin: 0;
+    height: 100vh;
+    display: block; /*era flex, mudei para block*/
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-tap-highligh-color: transparent;
+    transition: background-color var(--cubic-slider);
+}
+.imag{
+    width: 100%;
+    flex-shrink: 0;
+    display: block;
+    object-fit: cover; /*scale-down*/
+}
+.list{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+.player{
+    width: 17.15em;
+    display: flex;
+    overflow: hidden;
+    font-size: 1.22em;
+    border-radius: 1.35em;
+    flex-direction: column;
+    background-color: cadetblue;
+    height: var(--parent-height);
+    /*acrecentei*/
+    align-items: center;
+    margin-left: 15%;
+    margin-top: 5%;
+    padding: 20px;
+}
+.player_cabeca{
+    z-index: 1;
+    gap: 0 .4em;
+    width: 100%;
+    display: flex;
+    height: 5.85em;
+    flex-shrink: 0;
+    position: relative;
+    align-items: flex-start;
+    border-radius: inherit;
+    justify-content: flex-end;
+    background-color: ghostwhite;
+    padding: .95em 0.6em 0 1.2em;
+    transition: height var(--cubic-cabeca), box-shadow var(--duration), padding var(--duration) ease-in-out;
+}
+.player_cabeca.open-header{
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: unset;
+}
+.player_img{
+    width: 3.22em;
+    height: 3.22em;
+    border-radius: 1.32em;
+}
+.player_img--absolute{ /*procurar saber o que quer dizer este absolute no html*/
+    top: 1.4em;
+    left: 1.2em;
+    position: absolute;
+}
+.slider{
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width var(--cubic-cabeca), height var(--cubic-cabeca), top var(--cubic-cabeca), left var(--cubic-cabeca);
+}
+.slider.open-slider{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 14.6em;
+}
+.slider_context{
+    display: flex;
+    height: 100%;
+    will-change: trasform var(--cubic-slider);
+}
+.slider_img{
+    filter: brightness(75%);
+}
+.slider_name, .slider_title{
+    overflow: hidden;
+    white-space: nowrap;
+}
+/*https://www.codewithrandom.com/2022/03/simple-music-player-javascript-music.html*/
